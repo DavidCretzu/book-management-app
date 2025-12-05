@@ -10,4 +10,7 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id") /// hybernate
     private int id;
+
+    @Column(name = "title")
+    private String title;
 }
