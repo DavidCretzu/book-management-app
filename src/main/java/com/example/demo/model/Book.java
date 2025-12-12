@@ -24,4 +24,7 @@ public class Book {
 
     @Column(name = "number")
     private int number;
+
+    @Column(name = "pages")
+    private int numberOfPages;
 }
