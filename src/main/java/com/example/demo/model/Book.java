@@ -5,7 +5,7 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
-@Entity /// jba knows its an entity
+@Entity /// hibernate knows its an entity
 @Data /// adds set and get and constructor
 public class Book {
     @Id /// primary key
