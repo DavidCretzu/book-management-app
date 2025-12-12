@@ -21,4 +21,7 @@ public class Book {
 
     @Column(name = "published_date")
     private LocalDate publishedDate;
+
+    @Column(name = "number")
+    private int number;
 }
