@@ -6,8 +6,8 @@ import lombok.Data;
 @Entity
 @Data
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id///  makes it a primarykey
+    @GeneratedValue(strategy = GenerationType.IDENTITY) /// auto-generates id
     @Column(name = "user_id")
     private int userId;
 

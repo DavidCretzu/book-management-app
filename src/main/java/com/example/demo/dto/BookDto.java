@@ -19,7 +19,5 @@ public class BookDto {
 
     private LocalDate publishedDate;
 
-    private int number;
-
     private int numberOfPages;
 }

@@ -6,10 +6,10 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Entity /// hibernate knows its an entity
-@Data /// adds set and get and constructor
+@Data /// adds set , get and constructor
 public class Book {
     @Id /// primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) ///  make it a primary key
     @Column(name = "book_id") /// hybernate
     private int id;
 
@@ -21,9 +21,6 @@ public class Book {
 
     @Column(name = "published_date")
     private LocalDate publishedDate;
-
-    @Column(name = "number")
-    private int number;
 
     @Column(name = "pages")
     private int numberOfPages;
