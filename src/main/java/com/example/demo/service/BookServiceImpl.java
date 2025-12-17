@@ -6,8 +6,11 @@ import com.example.demo.repository.BookRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
-@AllArgsConstructor ///all class fields constructor
+@AllArgsConstructor ///all type of constructor for the class
 public class BookServiceImpl implements BookServiceInterface{
 
     private final BookRepository bookRepository;
@@ -17,11 +20,32 @@ public class BookServiceImpl implements BookServiceInterface{
     public void createBook(BookDto bookDto) {
         Book book = new Book();
 
-        book.setAuthor(bookDto.getAuthor());
         book.setTitle(bookDto.getTitle());
-        book.setNumberOfPages(bookDto.getNumberOfPages());
+        book.setAuthor(bookDto.getAuthor());
         book.setPublishedDate(bookDto.getPublishedDate());
+        book.setNumberOfPages(bookDto.getNumberOfPages());
 
         bookRepository.save(book);
     }
+
+    @Override
+    public void updateBook(BookDto bookDto , int id){
+    }
+
+    @Override
+    public void deleteBookById(int id) {
+        bookRepository.deleteById(id);
+    }
+
+    @Override
+    public List<BookDto> getAllBooks() {
+        List<Book> books = bookRepository.findAll();
+
+        //from List<Book> to List<BookDto>
+        return books.stream()
+                .map(book -> new BookDto(book.getTitle() , book.getAuthor() , book.getPublishedDate() , book.getNumberOfPages()))
+                .collect(Collectors.toList());
+    }
+
+
 }
