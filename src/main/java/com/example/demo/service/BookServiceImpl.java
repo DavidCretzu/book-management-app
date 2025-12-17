@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor ///all type of constructor for the class
+@AllArgsConstructor ///all class fields constructor
 public class BookServiceImpl implements BookServiceInterface{
 
     private final BookRepository bookRepository;
@@ -18,9 +18,9 @@ public class BookServiceImpl implements BookServiceInterface{
         Book book = new Book();
 
         book.setAuthor(bookDto.getAuthor());
-        book.setNumber(bookDto.getNumber());
-        book.setPublishedDate(bookDto.getPublishedDate());
+        book.setTitle(bookDto.getTitle());
         book.setNumberOfPages(bookDto.getNumberOfPages());
+        book.setPublishedDate(bookDto.getPublishedDate());
 
         bookRepository.save(book);
     }
