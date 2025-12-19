@@ -11,7 +11,7 @@ public class Book {
     @Id /// primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) ///  make it a primary key
     @Column(name = "book_id") /// hybernate
-    private int id;
+    private Integer id;
 
     @Column(name = "title")
     private String title;

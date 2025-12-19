@@ -9,8 +9,7 @@ public class User {
     @Id///  makes it a primarykey
     @GeneratedValue(strategy = GenerationType.IDENTITY) /// auto-generates id
     @Column(name = "user_id")
-    private int userId;
-
+    private Integer userId;
 
     @Column(name = "user_name")
     private String userName;
