@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.BookDto;
+import com.example.demo.exception.NoMatchBookId;
 import com.example.demo.model.Book;
 import com.example.demo.repository.BookRepository;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,8 @@ public class BookServiceImpl implements BookServiceInterface{
 
     @Override
     public void deleteBookById(int id) {
+        if(!bookRepository.existsById(id))
+            throw new NoMatchBookId("Cannot Delete. Book with id: " + id + " does not exist !");
         bookRepository.deleteById(id);
     }
 

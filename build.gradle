@@ -25,15 +25,19 @@ repositories {
 }
 
 dependencies {
+    // Core Spring Boot
     implementation 'org.springframework.boot:spring-boot-starter'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'com.mysql:mysql-connector-j:8.4.0'
+
+    implementation 'org.jboss.logging:jboss-logging:3.6.1.Final'
+
+    // Database
     runtimeOnly 'com.mysql:mysql-connector-j:8.4.0'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Lombok (Cleaned up duplicates)
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 }

@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.UserDto;
+import com.example.demo.exception.NoMatchBookId;
 import com.example.demo.model.User;
+import com.example.demo.repository.BookRepository;
 import com.example.demo.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserServiceInerface{
 
     private final UserRepository userRepository;
+    private final BookRepository bookRepository;
 
     @Override
     public void create(UserDto userDto) {
@@ -40,6 +43,9 @@ public class UserServiceImpl implements UserServiceInerface{
 
     @Override
     public void deleteUser(int id) {
-        userRepository.deleteById(id);
+       if(!userRepository.existsById(id)){
+           throw new NoMatchBookId("Cannot delete. User with id: " + id + " does not exist !");
+       }
+       userRepository.deleteById(id);
     }
 }
