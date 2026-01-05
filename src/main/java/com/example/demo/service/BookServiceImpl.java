@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.convertor.BookMapper;
 import com.example.demo.dto.BookDto;
 import com.example.demo.exception.NoMatchBookId;
 import com.example.demo.model.Book;
@@ -19,13 +20,7 @@ public class BookServiceImpl implements BookServiceInterface{
 
     @Override
     public void createBook(BookDto bookDto) {
-        Book book = new Book();
-
-        book.setTitle(bookDto.getTitle());
-        book.setAuthor(bookDto.getAuthor());
-        book.setPublishedDate(bookDto.getPublishedDate());
-        book.setNumberOfPages(bookDto.getNumberOfPages());
-
+        Book book = BookMapper.toEntity(bookDto);
         bookRepository.save(book);
     }
 
@@ -46,7 +41,7 @@ public class BookServiceImpl implements BookServiceInterface{
 
         //from List<Book> to List<BookDto>
         return books.stream()
-                .map(book -> new BookDto(book.getTitle() , book.getAuthor() , book.getPublishedDate() , book.getNumberOfPages()))
+                .map(book -> BookMapper.toDto(book))
                 .collect(Collectors.toList());
     }
 
