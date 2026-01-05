@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.convertor.UserMapper;
 import com.example.demo.dto.UserDto;
 import com.example.demo.exception.NoMatchBookId;
 import com.example.demo.model.User;
@@ -20,10 +21,7 @@ public class UserServiceImpl implements UserServiceInerface{
 
     @Override
     public void create(UserDto userDto) {
-        User user = new User();
-        user.setUserName(userDto.getUserName());
-        user.setPassword(userDto.getPassword());
-
+        User user = UserMapper.toEntity(userDto);
         userRepository.save(user);
     }
 
@@ -37,7 +35,7 @@ public class UserServiceImpl implements UserServiceInerface{
 
         //from List<User> to List<UserDto>
         return users.stream()
-                .map(user -> new UserDto(user.getUserName() , user.getPassword()))
+                .map(user -> UserMapper.toDto(user))
                 .collect(Collectors.toList());
     }
 

@@ -1,11 +1,17 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Entity /// hibernate knows its an entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Data /// adds set , get and constructor
 public class Book {
     @Id /// primary key
@@ -24,4 +30,5 @@ public class Book {
 
     @Column(name = "pages")
     private int numberOfPages;
+
 }
