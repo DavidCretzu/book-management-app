@@ -32,5 +32,9 @@ public class BookController {
         return bookServiceInterface.getAllBooks();
     }
 
+    @GetMapping("/test-cors")
+    public String testConnection() {
+        return "CORS is working! Hello from Spring Boot.";
+    }
 
 }
