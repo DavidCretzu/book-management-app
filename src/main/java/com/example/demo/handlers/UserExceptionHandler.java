@@ -1,4 +1,4 @@
-package com.example.demo.exceptionHandlers;
+package com.example.demo.handlers;
 
 import com.example.demo.exception.NoMatchUserId;
 import org.springframework.http.HttpStatus;
