@@ -45,5 +45,9 @@ public class BookServiceImpl implements BookServiceInterface{
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void deleteBookByAuthorTitle(String title, String author){
+        bookRepository.deleteByTitleAndAuthor(title , author);
+    }
 
 }
