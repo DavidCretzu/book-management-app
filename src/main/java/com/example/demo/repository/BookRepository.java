@@ -3,5 +3,6 @@ package com.example.demo.repository;
 import com.example.demo.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BookRepository extends JpaRepository<Book, Integer> {/// Book with id of type Integer
+public interface BookRepository extends JpaRepository<Book, Integer> {
+    void deleteByTitleAndAuthor(String title ,  String author);
 }

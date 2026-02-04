@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.BookDto;
+import com.example.demo.model.Book;
 import com.example.demo.service.BookServiceInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +23,9 @@ public class BookController {
         bookServiceInterface.createBook(bookDto);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable("id") int id){
-        bookServiceInterface.deleteBookById(id);
-    }
-
-    @GetMapping("/all")
-    public List<BookDto> getAll(){
-        return bookServiceInterface.getAllBooks();
+    @DeleteMapping("/delete")
+    public void deleteBook(@RequestParam String title , @RequestParam String author){
+        bookServiceInterface.deleteBookByAuthorTitle(title , author);
     }
 
     @GetMapping("/test-cors")
