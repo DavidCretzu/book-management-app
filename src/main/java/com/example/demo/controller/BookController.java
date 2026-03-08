@@ -22,19 +22,15 @@ public class BookController {
         bookServiceInterface.createBook(bookDto);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable("id") int id){
-        bookServiceInterface.deleteBookById(id);
+    @DeleteMapping("/delete")
+    public void deleteBook(@RequestParam String title , @RequestParam String author){
+        bookServiceInterface.deleteBookByAuthorTitle(title , author);
     }
 
     @GetMapping("/all")
-    public List<BookDto> getAll(){
+    public List<BookDto> getAllBooks() {
         return bookServiceInterface.getAllBooks();
     }
 
-    @GetMapping("/test-cors")
-    public String testConnection() {
-        return "CORS is working! Hello from Spring Boot.";
-    }
 
 }
